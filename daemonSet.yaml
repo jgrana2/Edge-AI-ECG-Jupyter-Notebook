@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+    name: ecgtest
+    labels:
+      name: ecgtest
+spec:
+  selector:
+    matchLabels:
+      name: ecgtest
+  template:
+    metadata:
+      labels:
+        name: ecgtest
+    spec:
+      containers:
+        - name: ecgtest
+          image: josedgv/ecgtest:0.1
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
